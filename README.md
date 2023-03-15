@@ -1,2 +1,2 @@
 # Inked-Art-Homepage-Project
- A Tattoo Shop's Homepage
+ This is a Tattoo Shop's Homepage that I created.
