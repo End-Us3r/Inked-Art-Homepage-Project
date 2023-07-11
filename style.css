@@ -16,6 +16,8 @@ body {
     line-height: 1.5;
     margin: 0 auto;
     text-align: center;
+    padding: 0;
+    margin: 0;
 }
 
 footer {
@@ -54,9 +56,21 @@ h2 {
     font-size: 125px;
     height: auto;
     color: #f1f1f1;
-    padding-top: 8rem;
     text-transform: capitalize;
     text-align: center;
+    padding-bottom: 5rem;
+}
+
+.banner-statement {
+    font-family: Arial, Helvetica;
+    font-weight: normal;
+    font-size: 50px;
+    height: auto;
+    color: #f1f1f1;
+    text-transform: capitalize;
+    text-align: center;
+    margin: 0 auto;
+    padding: 40px;
 }
 
 .hero-banner p {
@@ -86,12 +100,13 @@ h2 {
     background-color: #c41616;
     padding: 0 40px;
     padding-bottom: 50px;
-    height: 1850px;
+    display: flex;
+    flex-direction: column;
 }
 
 .tattoos {
     display: flex;
-    height: 500px;
+    height: auto;
     flex-wrap: wrap;
     text-align: center;
     justify-content: space-between;
