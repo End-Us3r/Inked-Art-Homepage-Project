@@ -18,6 +18,7 @@ body {
     text-align: center;
     padding: 0;
     margin: 0;
+    perspective: 1000px;
 }
 
 footer {
@@ -35,34 +36,41 @@ footer p {
 
 h2 {
     font-family: 'Lobster', cursive;
-    font-weight: normal;
+    font-weight: 400;
+    font-size: 5rem;
     margin: 0;
-    padding: 25px;
+    padding: 1rem;
     text-transform: capitalize;
     text-align: center;
-    margin-bottom: 25px;
-    border-bottom: 2px solid;
 }
+
+section.gallery > h2, section.portraits > h2, section.artists > h2{
+    border-bottom: 5px solid black;
+}
+
 
 .hero-banner {
     background-image: url('images/tinified/hero-banner.jpg');
     width: 100%;
-    height: auto;
+    height: 100vh;
     background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
     padding: 1px 0;
+    align-content: center;
+    overflow: hidden;
 }
 
 .hero-banner h1 {
     font-family: 'Lobster', cursive;
     font-weight: normal;
-    font-size: 150px;
+    font-size: 6rem;
     height: auto;
     color: #f1f1f1;
     text-transform: capitalize;
     text-align: center;
-    padding-bottom: 5rem;
+    top: 50px;
+    padding: 0;
+    margin: 0 auto;
+    position: relative;
 }
 
 .banner-statement {
@@ -80,23 +88,27 @@ h2 {
 .hero-banner p {
     font-family: Arial, Helvetica;
     font-weight: normal;
-    font-size: 50px;
+    font-size: 2rem;
     height: auto;
     color: #f1f1f1;
     text-transform: capitalize;
     text-align: center;
-    margin: 0 auto;
+    margin: 1rem auto;
+    padding: 1rem;
 }
 
 .statement {
     text-align: center;
-    padding: 0 40px;
-    padding-bottom: 50px;
+    padding: 1rem;
+    margin: 1rem auto;
 }
 
 .statement-container {
-    text-align: center;
+    text-align: left;
     border-bottom: 2px solid;
+    margin: 0 250px;
+    padding: 1rem;
+    border-top: 2px solid;
 }
 
 .gallery {
@@ -108,11 +120,13 @@ h2 {
 }
 
 .tattoos {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     height: auto;
     flex-wrap: wrap;
     text-align: center;
     justify-content: space-between;
+    justify-items: center;
     padding: 20px 40px;
 }
 
@@ -123,14 +137,15 @@ h2 {
     width: 300px;
     height: auto;
     padding-bottom: 40px;
+    align-items: center;
 }
 
 .tattoo-container img {
-    width: 300px;
-    height: 300px;
+    width: 400px;
+    height: 500px;
     object-fit: cover;
     object-position: center;
-    border-radius: 100%;
+    border-radius: 25px;
     border: 2px solid #000;
 }
 
@@ -143,144 +158,382 @@ h2 {
 
 .portraits {
     display: flex;
-    height: 500px;
+    flex-direction: row;
     background: #242424;
     color: #f1f1f1;
     text-align: center;
     justify-content: space-between;
-    padding: 20px 40px;
+    margin: 0 3rem;
+    padding: 0;
+    padding-top: 20px;
 }
 
-.portraits p {
-    color: #fff;
-    background: black;
-    font-size: 1.5rem;
-    margin: 0;
-}
-
-.portrait-container {
-    display: flex;
-    flex-direction: column;
-    background: #fff;
-    color: #000;
-    text-align: center;
+.card {
     width: 300px;
-    height: 370px;
+    height: 400px;
+    color: #fff;
+    text-align: center;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.6s ease;
+    cursor: pointer;
+    perspective: 1000px;
+    transform: translateZ(0);
+}
+
+.card:hover {
+    transform: rotateY(180deg);
+}
+
+.card-front {
+    width: 300px;
+    height: 400px;
+    backface-visibility: hidden;
+    position: absolute;
+    border-radius: 25px;
+}
+
+.card-back {
+    background-color: lightgray;
+    color: black;
+    width: 300px;
+    height: 400px;
+    backface-visibility: hidden;
+    position: absolute;
+    border-radius: 25px;
+    transform: rotateY(180deg);
+}
+
+.card-back p {
+    padding: 0 0.5rem;
+    margin: 1rem 0;
+    margin-top: 2rem;
+    text-align: left;
+    letter-spacing: 1px;
+    line-height: 2rem;
+}
+
+.portraits img {
+    width: 300px;
+    height: 400px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 22px;
 }
 
 .artists {
     background: #242424;
     color: #f1f1f1;
     text-align: center;
-    padding: 0 40px;
-    padding-bottom: 50px;
+    padding: 5rem;
+    padding-top: 0;
 }
 
-@media only screen and (min-width: 380px) and (max-width: 768px) {
+@media only screen and (max-width: 425px) {
 
-    h2 {
-        font-family: 'Lobster', cursive;
-        font-weight: normal;
-        font-size: 2rem;
+    * {
+        box-sizing: border-box;
         margin: 0;
-        padding: 25px;
-        text-transform: capitalize;
-        text-align: center;
-        margin-bottom: 25px;
-        border-bottom: 2px solid;
+        padding: 0;
+    }
+
+    body {
+        font-size: 16px;
+    }
+
+    .hero-banner {
+        height: 100vh;
+        padding: 0 1rem;
+        margin: 0;
     }
 
     .hero-banner h1 {
-        font-family: 'Lobster', cursive;
-        font-weight: normal;
-        font-size: 69px;
-        height: auto;
-        color: #f1f1f1;
-        text-transform: capitalize;
-        text-align: center;
+        font-size: 3rem;
+        margin: 0;
         padding: 0;
-        margin: 0 auto
     }
 
     .hero-banner p {
-        font-family: Arial, Helvetica;
-        font-weight: normal;
-        font-size: 25px;
-        height: auto;
-        color: #f1f1f1;
-        text-transform: capitalize;
-        text-align: center;
+        font-size: 1rem;
+    }
+
+    h2 {
+        font-size: 2rem;
         margin: 0 auto;
+        padding: 0 1rem;
+    }
+
+
+    .statement-container {
+        margin: 0;
     }
 
     .gallery {
-        padding-bottom: 0;
+        display: flex;
+        flex-direction: column;
+        padding: 0;
+
     }
 
     .tattoos {
         display: flex;
-        height: auto;
-        flex-wrap: wrap;
-        text-align: center;
-        justify-content: center;
-        padding: 20px 40px;
-    }
-
-    .tattoo-container {
-        display: flex;
         flex-direction: column;
-        text-align: center;
-        width: auto;
-        height: auto;
-        padding: 0;
-        margin: 0 auto;
+        padding: 1rem 0;
+        margin: 0;
+        align-items: center;
+
     }
 
-    .tattoo-container img {
+    .tattoo-container img, .portraits img {
         width: 250px;
         height: 300px;
-        object-fit: cover;
-        object-position: center;
-        border-radius: 100%;
-        border: 2px solid #000;
     }
 
-    .tattoo-container > p {
-        color: black;
-        font-size: 25px;
-        font-weight: bold;
+    .card {
+        display: flex;
+        flex-direction: column;
+        padding: 1rem 0;
+        margin: 0;
+        align-items: center;
+    }
+
+    .card-front {
+        width: 250px;
+        height: 300px;
+    }
+
+    .card-back {
+        font-size: 16px;
+        line-height: 0.5rem;
+        width: 250px;
+        height: 300px;
+    }
+
+    .card-back p {
+        line-height: 1.2rem;
+    }
+
+    .artists {
+        display: flex;
+        flex-direction: column;
+        padding: 0;
+        margin: 0;
+        align-items: center;
     }
 
     .portraits {
         display: flex;
         flex-direction: column;
-        height: auto;
-        background: #242424;
-        color: #f1f1f1;
-        text-align: center;
+        padding: 0;
+        margin: 0;
+    }
+
+}
+
+@media only screen and (min-width: 426px) and (max-width: 768px) {
+
+    * {
+        box-sizing: border-box;
+        margin: 0;
         padding: 0;
     }
 
-    .portraits p {
-        color: #fff;
-        background: black;
-        font-size: 1.5rem;
+    body {
+        font-size: 16px;
+    }
+
+    .hero-banner {
+        height: 100vh;
+        padding: 0 1rem;
         margin: 0;
     }
 
-    .portrait-container {
-        display: flex;
-        flex-direction: column;
-        background-color: #c41616;
-        color: #000;
-        text-align: center;
-        width: auto;
-        height: auto;
-        padding: 2rem;
+    .hero-banner h1 {
+        font-size: 3rem;
         margin: 0;
+        padding: 0;
+    }
+
+    .hero-banner p {
+        font-size: 1rem;
+    }
+
+    h2 {
+        font-size: 2rem;
+        margin: 0 auto;
+        padding: 0 1rem;
     }
 
     .statement-container {
-        padding-bottom: 0;
+        margin: 0;
+    }
+
+    .gallery {
+        display: flex;
+        flex-direction: column;
+        padding: 0;
+
+    }
+
+    .tattoos {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        padding: 1rem 0;
+        margin: 0;
+        align-items: center;
+
+    }
+
+    .tattoo-container img {
+        width: 450px;
+        height: 300px;
+    }
+
+    .portraits img {
+        width: 250px;
+        height: 300px;
+    }
+
+    .card {
+        display: flex;
+        flex-direction: column;
+        padding: 1rem 0;
+        margin: 0;
+        align-items: center;
+    }
+
+    .card-front {
+        width: 250px;
+        height: 300px;
+    }
+
+    .card-back {
+        font-size: 16px;
+        line-height: 0.5rem;
+        width: 250px;
+        height: 300px;
+    }
+
+    .card-back p {
+        line-height: 1.2rem;
+    }
+
+    .artists {
+        display: flex;
+        flex-direction: column;
+        padding: 0;
+        margin: 0;
+        align-items: center;
+    }
+
+    .portraits {
+        display: flex;
+        flex-direction: column;
+        padding: 0;
+        margin: 0;
+    }
+}
+
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        font-size: 16px;
+    }
+
+    .hero-banner {
+        height: 100vh;
+        padding: 0 1rem;
+        margin: 0;
+    }
+
+    .hero-banner h1 {
+        font-size: 3rem;
+        margin: 0;
+        padding: 0;
+    }
+
+    .hero-banner p {
+        font-size: 1rem;
+    }
+
+    h2 {
+        font-size: 2rem;
+        margin: 0 auto;
+        padding: 0 1rem;
+    }
+
+    .statement-container {
+        margin: 0;
+    }
+
+    .gallery {
+        display: flex;
+        flex-direction: column;
+        padding: 0;
+
+    }
+
+    .tattoos {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        padding: 1rem 0;
+        margin: 0;
+        align-items: center;
+
+    }
+
+    .tattoo-container img {
+        width: 450px;
+        height: 300px;
+    }
+
+    .portraits img {
+        width: 250px;
+        height: 300px;
+    }
+
+    .card {
+        display: flex;
+        flex-direction: column;
+        padding: 1rem 0;
+        margin: 0;
+        align-items: center;
+    }
+
+    .card-front {
+        width: 250px;
+        height: 300px;
+    }
+
+    .card-back {
+        font-size: 16px;
+        line-height: 0.5rem;
+        width: 250px;
+        height: 300px;
+    }
+
+    .card-back p {
+        line-height: 1.2rem;
+    }
+
+    .artists {
+        display: flex;
+        flex-direction: column;
+        padding: 0;
+        margin: 0;
+        align-items: center;
+    }
+
+    .portraits {
+        display: flex;
+        flex-direction: row;
+        padding: 0;
+        margin: 0;
     }
 }
